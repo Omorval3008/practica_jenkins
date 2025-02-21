@@ -5,14 +5,10 @@ import ListaDeTareas from './componentes/ListaDeTareas';
 function App() {
   return (
     <div className='aplicacion-tareas'>
-      <div className='freecodecamp-logo-contenedor'>
-        <img 
-          src={freeCodeCampLogo} 
-          alt=""
-          className='freecodecamp-logo' />
-      </div>
+	<h1>TEST SINCRONIZACIÓN AUTOMÁTICA CON GIT</h1> //Se ha cambaido el titulo para ver 
+	//si se refleja el cambio
       <div className='tareas-lista-principal'>
-        <h1>Mis Tareas</h1>
+        <h1>Mi lista de tareas</h1>
         <ListaDeTareas />
       </div>
     </div>
