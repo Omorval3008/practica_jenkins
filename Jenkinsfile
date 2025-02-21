@@ -2,13 +2,15 @@ pipeline {
     agent any
 
     triggers {
-        pollSCM('* * * * *') // Verifica cambios en GitHub cada minuto
+        pollSCM('* * * * *') // Va a estar mirando cada minuto si han surgido (o no)
+        //cambios en el repo para sincronizalos
     }
 
     stages {
         stage('Clonar Repositorio') {
             steps {
-                git branch: 'main', url: 'https://github.com/Omorval3008/practica_jenkins.git'
+            	//especifico mi repo, solucionado nombre rama al correcto
+                git branch: 'master', url: 'https://github.com/Omorval3008/practica_jenkins.git'
             }
         }
 
