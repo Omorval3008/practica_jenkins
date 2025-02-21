@@ -1,23 +1,35 @@
 pipeline {
     agent any
+
+    triggers {
+        pollSCM('* * * * *') // Verifica cambios en GitHub cada minuto
+    }
+
     stages {
-        stage('Build') {
+        stage('Clonar Repositorio') {
             steps {
-                echo 'Copiando los ficheros'
+                git branch: 'main', url: 'https://github.com/Omorval3008/practica_jenkins.git'
+            }
+        }
+
+        stage('Instalar Dependencias') {
+            steps {
                 sh 'npm install'
-                sh 'npm run build'                
             }
         }
-        stage('Test') {
+
+        stage('Compilar React') {
             steps {
-                echo 'Testing..'
+                sh 'npm run build'
             }
         }
-        stage('Deploy') {
+
+        stage('Desplegar en Apache') {
             steps {
-		echo 'Desploying...'
-		sh 'cp -r ./build/* /var/www/html/'    
-	    }
+                sh 'sudo rm -rf /var/www/html/*'
+                sh 'sudo cp -r build/* /var/www/html/'
+            }
         }
     }
 }
+
