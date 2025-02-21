@@ -8,7 +8,7 @@ function App() {
 	{/*Se habian insertado comentarios de forma incorrecta
 	Se ha cambiado el titulo para ver si los cambios se reflejan*/}
       <div className='tareas-lista-principal'>
-        <h1>Mi lista de tareas</h1>
+        <h1>Mi lista de tareas TEST</h1>
         <ListaDeTareas />
       </div>
     </div>
