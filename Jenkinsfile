@@ -2,25 +2,19 @@ pipeline {
     agent any
 
     triggers {
-        GenericTrigger(
-            genericVariables: [
-                [key: 'ref', value: '$.ref']
-            ],
-            causeString: 'Usando webhook',
-            token: credentials('token_secreto'),
-            printContributedVariables: true,
-            printPostContent: true
-        )
+        githubPush() 
     }
     
     environment {
-        GITHUB_WEBHOOK_TOKEN = credentials('token_secreto')
+        GITHUB_WEBHOOK_TOKEN = credentials('token_secreto') 
     }
     
     stages {
         stage('Clonar Repositorio') {
             steps {
-                git branch: 'master', url: 'https://github.com/Omorval3008/practica_jenkins.git', credentialsId: 'github-credentials'
+                git branch: 'master', 
+                    url: 'https://github.com/Omorval3008/practica_jenkins.git', 
+                    credentialsId: '3ab3792f-06b2-46e2-97b0-fd0fd96112bf'
             }
         }
 
