@@ -2,10 +2,21 @@ pipeline {
     agent any
 
     triggers {
-        pollSCM('* * * * *') // Va a estar mirando cada minuto si han surgido (o no)
-        //cambios en el repo para sincronizalos
+        GenericTrigger(
+            genericVariables: [
+                [key: 'ref', value: '$.ref']
+            ],
+            causeString: 'Usando webhook',
+            token: '',
+            printContributedVariables: true,
+            printPostContent: true
+        )
     }
-
+    
+    environment {
+        GITHUB_WEBHOOK_TOKEN = credentials('token_secreto')
+    }
+    
     stages {
         stage('Clonar Repositorio') {
             steps {
