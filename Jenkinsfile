@@ -7,7 +7,7 @@ pipeline {
                 [key: 'ref', value: '$.ref']
             ],
             causeString: 'Usando webhook',
-            token: '',
+            token: credentials('token_secreto'),
             printContributedVariables: true,
             printPostContent: true
         )
@@ -20,8 +20,7 @@ pipeline {
     stages {
         stage('Clonar Repositorio') {
             steps {
-            	//especifico mi repo, solucionado nombre rama al correcto
-                git branch: 'master', url: 'https://github.com/Omorval3008/practica_jenkins.git'
+                git branch: 'master', url: 'https://github.com/Omorval3008/practica_jenkins.git', credentialsId: 'github-credentials'
             }
         }
 
