@@ -4,7 +4,7 @@ pipeline {
     triggers {
         githubPush() 
         /*
-        Especifica que tipo de trigger es el que va a ejecutar el despliege  
+        Especifica que tipo de trigger es el que va a ejecutar el despliege
         
         En este caso hemos elegido githubPush ya que el ejercicio pide que solo se despliege
         la app de nuevo cuando hagamos un push al repo
