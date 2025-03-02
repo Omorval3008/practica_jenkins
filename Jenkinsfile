@@ -50,8 +50,8 @@ pipeline {
             Por último, copiamos los archivos de la build en la carpeta donde se aloja nuestra web en 			
             apache
             */
-                sh 'sudo rm -rf /var/www/html/*'
-                sh 'sudo cp -r build/* /var/www/html/'
+                sh 'rm -rf /var/www/html/*'
+                sh 'cp -r build/* /var/www/html/'
             }
         }
     }
